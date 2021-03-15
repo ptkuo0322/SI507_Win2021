@@ -1,0 +1,45 @@
+#import the module first
+import requests
+import json
+
+# step 1, get the json file first
+response = requests.get("https://dsl.richmond.edu/panorama/redlining/static/downloads/geojson/MIDetroit1939.geojson")
+#print(response.text)
+json_str = response.text
+json_list = json.loads(json_str) # turn the txt file into dictionary
+#print(json_list["features"][1]["properties"]["holc_grade"])
+
+
+ 
+#just use to check the for and if loop
+'''
+listss = []
+for ele in range(len(json_list["features"])):
+    if (json_list["features"][ele]["properties"]["holc_grade"]) == "A":
+        listss.append("darkgreen")
+    elif  (json_list["features"][ele]["properties"]["holc_grade"]) == "B":
+        listss.append("cornflowerblue")
+    elif  (json_list["features"][ele]["properties"]["holc_grade"]) == "C":
+        listss.append("gold")
+    elif  (json_list["features"][ele]["properties"]["holc_grade"]) == "D":
+        listss.append("maroon")
+print(listss)
+'''
+
+#check for list conprehension 
+'''
+lista = ['darkgreen' if json_list["features"][ele]["properties"]["holc_grade"] == "A"  else 'cornflowerblue' if json_list["features"][ele]["properties"]["holc_grade"] == "B" 
+else 'gold' if json_list["features"][ele]["properties"]["holc_grade"] == "C"  else 'maroon' 
+for ele in range(len(json_list["features"]))]
+print(lista)
+'''
+
+# step 2 
+thisDict = { 
+    "Coordinates": [json_list["features"][ele]["geometry"]["coordinates"] for ele in range(len(json_list["features"]))], #add lists of coordinates from the json file for each district 
+    "Holc_Grade": [json_list["features"][ele]["properties"]["holc_grade"] for ele in range(len(json_list["features"]))], # add the grades from the json file for each district 
+    "Holc_Color": ['darkgreen' if json_list["features"][ele]["properties"]["holc_grade"] == "A"  else 'cornflowerblue' if json_list["features"][ele]["properties"]["holc_grade"] == "B" 
+    else 'gold' if json_list["features"][ele]["properties"]["holc_grade"] == "C"  else 'maroon' 
+    for ele in range(len(json_list["features"]))], #add the appropriate color for each district based on the instructions below 
+    "name": [ele+1 for ele in range(len(json_list["features"]))] # the name of the district is up to you, you might use a number or other iterator 
+}
