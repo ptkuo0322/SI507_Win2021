@@ -1,0 +1,75 @@
+            
+def count_query_list(alist):
+
+    for idx, ele in enumerate(alist):
+        if 40 <= len(alist):
+            if idx in range(0,10):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list0.append(astring)
+            if idx in range(10,20):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list1.append(astring)
+            if idx in range(20,30):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list2.append(astring)
+            if idx in range(30,40):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list3.append(astring)
+            if idx in range(40,51):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list4.append(astring)
+        elif 30 <= len(alist) < 40:
+            if idx in range(0,10):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list0.append(astring)
+            if idx in range(10,20):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list1.append(astring)
+            if idx in range(20,30):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list2.append(astring)
+            if idx in range(30,40):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list3.append(astring)
+        elif 20 <= len(alist) < 30:
+            if idx in range(0,10):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list0.append(astring)
+            if idx in range(10,20):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list1.append(astring)
+            if idx in range(20,30):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list2.append(astring)
+        elif 10 <= len(alist) < 20:
+            if idx in range(0,10):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list0.append(astring)
+            if idx in range(10,20):
+                astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+                query_list1.append(astring)
+        elif 0 <= len(alist) < 10:
+            astring = f"&markers=label:{symbol_list[(idx)]}|{ele}"
+            query_list0.append(astring)  
+
+    if len(alist) < 10:
+        final_list.append(query_list0)
+    elif 10 <=len(alist) < 20:
+        final_list.append(query_list0)
+        final_list.append(query_list1)
+    elif 20 <=len(alist) < 30:
+        final_list.append(query_list0)
+        final_list.append(query_list1)
+        final_list.append(query_list2)
+    elif 30 <=len(alist) < 40:
+        final_list.append(query_list0)
+        final_list.append(query_list1)
+        final_list.append(query_list2)
+        final_list.append(query_list3)
+    elif 40 <=len(alist):
+        final_list.append(query_list0)
+        final_list.append(query_list1)
+        final_list.append(query_list2)
+        final_list.append(query_list3)
+        final_list.append(query_list4)
+    return final_list
